@@ -21,23 +21,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
     types: ['https://schema.org/Publication'],
     operations: [
         new Get(
-            uriTemplate: '/base-publication/publications/{identifier}',
+            uriTemplate: '/base/publications/{identifier}',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['BasePublication'],
             ),
             provider: PublicationProvider::class
         ),
         new GetCollection(
-            uriTemplate: '/base-publication/publications',
+            uriTemplate: '/base/publications',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['BasePublication'],
             ),
             provider: PublicationProvider::class
         ),
         new Post(
-            uriTemplate: '/base-publication/publications',
+            uriTemplate: '/base/publications',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['BasePublication'],
                 requestBody: new RequestBody(
                     content: new \ArrayObject([
                         'application/ld+json' => [
@@ -58,9 +58,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
             processor: PublicationProcessor::class
         ),
         new Delete(
-            uriTemplate: '/base-publication/publications/{identifier}',
+            uriTemplate: '/base/publications/{identifier}',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['BasePublication'],
             ),
             provider: PublicationProvider::class,
             processor: PublicationProcessor::class
