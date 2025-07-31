@@ -17,6 +17,7 @@ class PublicationProvider extends AbstractDataProvider
 
     public function __construct(PublicationService $publicationService)
     {
+        parent::__construct();
         $this->publicationService = $publicationService;
     }
 
