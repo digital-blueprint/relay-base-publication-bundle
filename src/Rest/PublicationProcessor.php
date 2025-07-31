@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\Rest;
 
-use Dbp\Relay\CoreBundle\Rest\AbstractDataProcessor;
 use Dbp\Relay\BasePublicationBundle\Entity\Publication;
 use Dbp\Relay\BasePublicationBundle\Service\PublicationService;
+use Dbp\Relay\CoreBundle\Rest\AbstractDataProcessor;
 
 class PublicationProcessor extends AbstractDataProcessor
 {

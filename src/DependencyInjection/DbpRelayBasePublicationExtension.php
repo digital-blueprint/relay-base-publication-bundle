@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\DependencyInjection;
 
-use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
 use Dbp\Relay\BasePublicationBundle\Service\PublicationService;
+use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
