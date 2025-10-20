@@ -79,6 +79,14 @@ class Publication
     #[Groups(['BasePublicationPublication:output', 'BasePublicationPublication:input'])]
     private ?string $name;
 
+    #[ApiProperty(iris: ['https://schema.org/author'])]
+    #[Groups(['BasePublicationPublication:output', 'BasePublicationPublication:input'])]
+    private ?string $authors = null;
+
+    #[ApiProperty(iris: ['https://schema.org/identifier'])]
+    #[Groups(['BasePublicationPublication:output', 'BasePublicationPublication:input'])]
+    private ?string $uuid = null;
+
     public function getIdentifier(): ?string
     {
         return $this->identifier;
@@ -97,5 +105,25 @@ class Publication
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getAuthors(): ?string
+    {
+        return $this->authors;
+    }
+
+    public function setAuthors(?string $authors): void
+    {
+        $this->authors = $authors;
+    }
+
+     public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(?string $uuid): void
+    {
+        $this->uuid = $uuid;
     }
 }

@@ -1,10 +1,22 @@
 services:
+  # Rest autowiring
   Dbp\Relay\BasePublicationBundle\Rest\:
     resource: '../../Rest'
     autowire: true
     autoconfigure: true
 
+  # Only autowire other services (exclude PublicationService)
   Dbp\Relay\BasePublicationBundle\Service\:
-    resource: '../../Service'
+    resource: '../../Service/*'
+    exclude: '../../Service/PublicationService.php'
     autowire: true
     autoconfigure: true
+
+  # Explicitly wire PublicationService
+  Dbp\Relay\BasePublicationBundle\Service\PublicationService:
+    arguments:
+      - '@Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface'
+
+  # Interface → dummy
+  Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface:
+    class: Dbp\Relay\BasePublicationBundle\Service\DummyPublicationProvider
