@@ -12,7 +12,6 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\RequestBody;
-use Dbp\Relay\BasePublicationBundle\Rest\PublicationProcessor;
 use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -33,37 +32,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 tags: ['BasePublication'],
             ),
             provider: PublicationProvider::class
-        ),
-        new Post(
-            uriTemplate: '/base/publications',
-            openapi: new Operation(
-                tags: ['BasePublication'],
-                requestBody: new RequestBody(
-                    content: new \ArrayObject([
-                        'application/ld+json' => [
-                            'schema' => [
-                                'type' => 'object',
-                                'properties' => [
-                                    'name' => ['type' => 'string'],
-                                ],
-                                'required' => ['name'],
-                            ],
-                            'example' => [
-                                'name' => 'Example Name',
-                            ],
-                        ],
-                    ])
-                )
-            ),
-            processor: PublicationProcessor::class
-        ),
-        new Delete(
-            uriTemplate: '/base/publications/{identifier}',
-            openapi: new Operation(
-                tags: ['BasePublication'],
-            ),
-            provider: PublicationProvider::class,
-            processor: PublicationProcessor::class
         ),
     ],
     normalizationContext: ['groups' => ['BasePublicationPublication:output']],
