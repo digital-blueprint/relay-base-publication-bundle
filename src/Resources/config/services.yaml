@@ -5,6 +5,12 @@ services:
     autowire: true
     autoconfigure: true
 
+  # Authorization service
+  Dbp\Relay\BasePublicationBundle\Authorization\:
+    resource: '../../Authorization'
+    autowire: true
+    autoconfigure: true
+    
   # Only autowire other services (exclude PublicationService)
   Dbp\Relay\BasePublicationBundle\Service\:
     resource: '../../Service/*'

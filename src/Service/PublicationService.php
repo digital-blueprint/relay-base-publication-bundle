@@ -10,6 +10,7 @@ use Dbp\Relay\BasePublicationBundle\Entity\Publication;
 class PublicationService
 {
     private PublicationProviderInterface $provider;
+    private array $config = [];
 
     public function __construct(PublicationProviderInterface $provider)
     {
@@ -20,10 +21,13 @@ class PublicationService
     {
         return $this->provider->getPublicationById($id, $options);
     }
-
     public function setConfig(array $config): void
     {
-        // no-op for dummy setup
+        $this->config = $config;
+    }
+    public function getConfig(): array
+    {
+        return $this->config;
     }
 
     /**

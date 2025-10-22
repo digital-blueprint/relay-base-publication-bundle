@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\DependencyInjection;
 
+use Dbp\Relay\BasePublicationBundle\Authorization\AuthorizationService;
 use Dbp\Relay\BasePublicationBundle\Service\PublicationService;
 use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
 use Symfony\Component\Config\FileLocator;
@@ -24,6 +25,9 @@ class DbpRelayBasePublicationExtension extends ConfigurableExtension
         $loader->load('services.yaml');
 
         $this->addResourceClassDirectory($container, __DIR__.'/../Entity');
+
+        $definition = $container->getDefinition(AuthorizationService::class);
+        $definition->addMethodCall('setConfig', [$mergedConfig]);
 
         $definition = $container->getDefinition(PublicationService::class);
         $definition->addMethodCall('setConfig', [$mergedConfig]);
