@@ -1,4 +1,3 @@
-Relay-API Bundle
-================
+# DbpRelayBasePublicationBundle
 
-TODO
+See the [documentation](./docs/README.md) for more information
