@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\API;
@@ -13,12 +12,9 @@ interface PublicationProviderInterface
     /**
      * Retrieve a single publication by its identifier.
      *
-     * @param string $identifier
      * @param array $options Available options:
-     *                        * Locale::LANGUAGE_OPTION (language in ISO 639-1 format)
-     *                        * LocalData::INCLUDE_PARAMETER_NAME
-     *
-     * @return Publication
+     *                       * Locale::LANGUAGE_OPTION (language in ISO 639-1 format)
+     *                       * LocalData::INCLUDE_PARAMETER_NAME
      *
      * @throws ApiError
      */
@@ -27,8 +23,6 @@ interface PublicationProviderInterface
     /**
      * Retrieve a paginated list of publications.
      *
-     * @param int $currentPageNumber
-     * @param int $maxNumItemsPerPage
      * @param array $options Available options:
      *                       * Locale::LANGUAGE_OPTION (language in ISO 639-1 format)
      *                       * Publication::SEARCH_PARAMETER_NAME (partial, case-insensitive text search on 'title')

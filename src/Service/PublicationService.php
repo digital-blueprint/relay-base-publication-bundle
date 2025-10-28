@@ -21,10 +21,12 @@ class PublicationService
     {
         return $this->provider->getPublicationById($id, $options);
     }
+
     public function setConfig(array $config): void
     {
         $this->config = $config;
     }
+
     public function getConfig(): array
     {
         return $this->config;

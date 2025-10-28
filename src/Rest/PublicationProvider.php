@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\Rest;
 
+use Dbp\Relay\BasePublicationBundle\Authorization\AuthorizationService;
 use Dbp\Relay\BasePublicationBundle\Entity\Publication;
 use Dbp\Relay\BasePublicationBundle\Service\PublicationService;
 use Dbp\Relay\CoreBundle\Rest\AbstractDataProvider;
-use Dbp\Relay\BasePublicationBundle\Authorization\AuthorizationService;
 
 /**
  * @extends AbstractDataProvider<Publication>
@@ -39,7 +39,7 @@ class PublicationProvider extends AbstractDataProvider
 
     protected function isCurrentUserGrantedOperationAccess(int $operation): bool
     {
-        //return true;
+        // return true;
         return $this->authorizationService->isUser();
     }
 }

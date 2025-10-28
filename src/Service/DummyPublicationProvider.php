@@ -19,7 +19,7 @@ class DummyPublicationProvider implements PublicationProviderInterface
 
         $publication = new Publication();
         $publication->setIdentifier($identifier);
-        $publication->setName('Dummy Publication ' . $identifier);
+        $publication->setName('Dummy Publication '.$identifier);
 
         return $publication;
     }

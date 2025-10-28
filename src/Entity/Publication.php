@@ -6,12 +6,9 @@ namespace Dbp\Relay\BasePublicationBundle\Entity;
 
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
-use ApiPlatform\OpenApi\Model\RequestBody;
 use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -85,7 +82,7 @@ class Publication
         $this->authors = $authors;
     }
 
-     public function getUuid(): ?string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }

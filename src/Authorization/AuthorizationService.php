@@ -1,13 +1,12 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Dbp\Relay\BasePublicationBundle\Authorization;
 
+use Dbp\Relay\BasePublicationBundle\DependencyInjection\Configuration;
 use Dbp\Relay\CoreBundle\Authorization\AbstractAuthorizationService;
 use Dbp\Relay\CoreBundle\Authorization\AuthorizationException;
-use Dbp\Relay\BasePublicationBundle\DependencyInjection\Configuration;
 
 class AuthorizationService extends AbstractAuthorizationService
 {
@@ -23,7 +22,7 @@ class AuthorizationService extends AbstractAuthorizationService
     {
         try {
             $this->isGrantedRole(Configuration::ROLE_USER);
-            //$this->isGrantedRole(Configuration::ROLE_ADMIN);
+            // $this->isGrantedRole(Configuration::ROLE_ADMIN);
         } catch (AuthorizationException $authorizationException) {
             throw new \RuntimeException($authorizationException->getMessage());
         }
