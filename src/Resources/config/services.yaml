@@ -22,3 +22,5 @@ services:
     arguments:
       - '@Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface'
 
+  Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface:
+    '@Dbp\Relay\BasePublicationBundle\Service\DummyPublicationProvider'

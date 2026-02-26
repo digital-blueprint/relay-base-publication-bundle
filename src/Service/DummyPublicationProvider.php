@@ -9,7 +9,7 @@ use Dbp\Relay\BasePublicationBundle\Entity\Publication;
 use Dbp\Relay\CoreBundle\Exception\ApiError;
 use Symfony\Component\HttpFoundation\Response;
 
-class DummyPublicationProvider
+class DummyPublicationProvider implements PublicationProviderInterface
 {
     public function getPublicationById(string $identifier, array $options = []): Publication
     {
@@ -31,5 +31,10 @@ class DummyPublicationProvider
             $this->getPublicationById('2'),
             $this->getPublicationById('3'),
         ];
+    }
+
+    public function getRawPublicationData(string $identifier): ?array
+    {
+        return [];
     }
 }
