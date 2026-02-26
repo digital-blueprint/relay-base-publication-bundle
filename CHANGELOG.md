@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+* Support for LocalData
+
 ## v0.1.1
 
 * Add support for Symfony 7.4
