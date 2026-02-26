@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Dbp\Relay\BasePublicationBundle\DependencyInjection;
 
 use Dbp\Relay\CoreBundle\Authorization\AuthorizationConfigDefinition;
+use Dbp\Relay\CoreBundle\LocalData\LocalData;
+use Dbp\Relay\CoreBundle\Rest\Rest;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Dbp\Relay\CoreBundle\LocalData\LocalData;
-use Dbp\Relay\CoreBundle\Rest\Rest;
 
 class Configuration implements ConfigurationInterface
 {

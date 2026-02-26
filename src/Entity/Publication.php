@@ -8,13 +8,12 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use Dbp\Relay\BasePublicationBundle\DataProvider\PublicationDataProvider;
 use ApiPlatform\OpenApi\Model\Operation;
+use ApiPlatform\OpenApi\Model\Parameter;
 use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Dbp\Relay\CoreBundle\LocalData\LocalDataAwareInterface;
 use Dbp\Relay\CoreBundle\LocalData\LocalDataAwareTrait;
-use ApiPlatform\OpenApi\Model\Parameter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     shortName: 'BasePublicationPublication',
@@ -51,9 +50,9 @@ use ApiPlatform\OpenApi\Model\Parameter;
             provider: PublicationProvider::class
         ),
     ],
-    normalizationContext: ['groups' => ['BasePublicationPublication:output', 'LocalData:output'],'jsonld_embed_context' => true],
-    //normalizationContext: ['groups' => ['BasePublicationPublication:output']],
-    //denormalizationContext: ['groups' => ['BasePublicationPublication:input']]
+    normalizationContext: ['groups' => ['BasePublicationPublication:output', 'LocalData:output'], 'jsonld_embed_context' => true],
+    // normalizationContext: ['groups' => ['BasePublicationPublication:output']],
+    // denormalizationContext: ['groups' => ['BasePublicationPublication:input']]
 )]
 class Publication implements LocalDataAwareInterface
 {

@@ -26,6 +26,7 @@ class PublicationService
     {
         return $this->provider->getRawPublicationData($identifier);
     }
+
     public function setConfig(array $config): void
     {
         $this->config = $config;
@@ -43,5 +44,4 @@ class PublicationService
     {
         return $this->provider->getPublications($currentPageNumber, $maxNumItemsPerPage, $options);
     }
-
 }

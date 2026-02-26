@@ -35,5 +35,4 @@ interface PublicationProviderInterface
     public function getPublications(int $currentPageNumber, int $maxNumItemsPerPage, array $options = []): array;
 
     public function getRawPublicationData(string $identifier): ?array;
-
 }

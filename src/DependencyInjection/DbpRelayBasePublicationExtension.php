@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Dbp\Relay\BasePublicationBundle\DependencyInjection;
 
 use Dbp\Relay\BasePublicationBundle\Authorization\AuthorizationService;
+use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 use Dbp\Relay\BasePublicationBundle\Service\PublicationService;
 use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 
 class DbpRelayBasePublicationExtension extends ConfigurableExtension
 {
