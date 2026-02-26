@@ -8,6 +8,8 @@ use Dbp\Relay\CoreBundle\Authorization\AuthorizationConfigDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Dbp\Relay\CoreBundle\LocalData\LocalData;
+use Dbp\Relay\CoreBundle\Rest\Rest;
 
 class Configuration implements ConfigurationInterface
 {
@@ -23,10 +25,13 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('dbp_relay_base_publication');
-        $treeBuilder->getRootNode()
-            ->children()
-            ->append($this->getAuthorizationConfigNode())
-            ->end();
+
+        /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
+        $rootNode = $treeBuilder->getRootNode();
+        // append nodes to rootNode
+        $rootNode->append(LocalData::getConfigNodeDefinition()); // Local data config
+        $rootNode->append($this->getAuthorizationConfigNode());  // Authorization config
+        //  REST config: $rootNode->append(Rest::getConfigNodeDefinition());
 
         return $treeBuilder;
     }

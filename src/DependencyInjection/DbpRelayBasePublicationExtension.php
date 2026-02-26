@@ -11,6 +11,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 
 class DbpRelayBasePublicationExtension extends ConfigurableExtension
 {
@@ -27,6 +28,9 @@ class DbpRelayBasePublicationExtension extends ConfigurableExtension
         $this->addResourceClassDirectory($container, __DIR__.'/../Entity');
 
         $definition = $container->getDefinition(AuthorizationService::class);
+        $definition->addMethodCall('setConfig', [$mergedConfig]);
+
+        $definition = $container->getDefinition(PublicationProvider::class);
         $definition->addMethodCall('setConfig', [$mergedConfig]);
 
         $definition = $container->getDefinition(PublicationService::class);

@@ -6,8 +6,7 @@ services:
     autoconfigure: true
 
   # Authorization service
-  Dbp\Relay\BasePublicationBundle\Authorization\:
-    resource: '../../Authorization'
+  Dbp\Relay\BasePublicationBundle\Authorization\AuthorizationService:
     autowire: true
     autoconfigure: true
     
@@ -23,6 +22,3 @@ services:
     arguments:
       - '@Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface'
 
-  # Interface → dummy
-  Dbp\Relay\BasePublicationBundle\API\PublicationProviderInterface:
-    class: Dbp\Relay\BasePublicationBundle\Service\DummyPublicationProvider

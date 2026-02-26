@@ -8,9 +8,13 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use Dbp\Relay\BasePublicationBundle\DataProvider\PublicationDataProvider;
 use ApiPlatform\OpenApi\Model\Operation;
 use Dbp\Relay\BasePublicationBundle\Rest\PublicationProvider;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Dbp\Relay\CoreBundle\LocalData\LocalDataAwareInterface;
+use Dbp\Relay\CoreBundle\LocalData\LocalDataAwareTrait;
+use ApiPlatform\OpenApi\Model\Parameter;
 
 #[ApiResource(
     shortName: 'BasePublicationPublication',
@@ -20,6 +24,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
             uriTemplate: '/base/publications/{identifier}',
             openapi: new Operation(
                 tags: ['BasePublication'],
+                parameters: [
+                    new Parameter(
+                        name: 'includeLocal',
+                        in: 'query',
+                        description: 'Local data attributes to include',
+                        schema: ['type' => 'string']
+                    ),
+                ]
             ),
             provider: PublicationProvider::class
         ),
@@ -27,15 +39,25 @@ use Symfony\Component\Serializer\Annotation\Groups;
             uriTemplate: '/base/publications',
             openapi: new Operation(
                 tags: ['BasePublication'],
+                parameters: [
+                    new Parameter(
+                        name: 'includeLocal',
+                        in: 'query',
+                        description: 'Local data attributes to include',
+                        schema: ['type' => 'string']
+                    ),
+                ]
             ),
             provider: PublicationProvider::class
         ),
     ],
-    normalizationContext: ['groups' => ['BasePublicationPublication:output']],
-    denormalizationContext: ['groups' => ['BasePublicationPublication:input']]
+    normalizationContext: ['groups' => ['BasePublicationPublication:output', 'LocalData:output'],'jsonld_embed_context' => true],
+    //normalizationContext: ['groups' => ['BasePublicationPublication:output']],
+    //denormalizationContext: ['groups' => ['BasePublicationPublication:input']]
 )]
-class Publication
+class Publication implements LocalDataAwareInterface
 {
+    use LocalDataAwareTrait;
     #[ApiProperty(identifier: true)]
     #[Groups(['BasePublicationPublication:output'])]
     private ?string $identifier = null;
